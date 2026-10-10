@@ -51,16 +51,16 @@ The terminal prints how many sequences were written and how many were reverse-co
 The script checks the **FASTA read name**, which is the header line after the `>`. It never looks at file names.
 
 ```
->34B_OTSU_Otr-56-1728R     name ends in R, so the read is flipped
+>3B_OTSU_R     name ends in R, so the read is flipped
 ACGTTGCA...
->38B_OTSU_Otr-56-573F      name ends in F, so the read is left alone
+>3B_OTSU_F      name ends in F, so the read is left alone
 ACGTTGCA...
 ```
 
 Details that matter:
 
-- Only the first word of the header is checked. In `>34B_OTSU_Otr-56-1728R sample 3`, the script sees `34B_OTSU_Otr-56-1728R` and ignores `sample 3`.
-- The name must end exactly in `R`. A header such as `>34B_OTSU_Otr-56-1728R-` ends in `-`, so that read is not flipped. Headers from some assemblers and editors carry extra characters like this, so check yours.
+- Only the first word of the header is checked. In `>3B_OTSU_R sample 3`, the script sees `3B_OTSU_R` and ignores `sample 3`.
+- The name must end exactly in `R`. A header such as `>3B_OTSU_R-` ends in `-`, so that read is not flipped. Headers from some assemblers and editors carry extra characters like this, so check yours.
 - A forward read whose name happens to end in `R` would be flipped by mistake. Check your naming first.
 - The input is one FASTA file holding all the reads you want to process.
 
